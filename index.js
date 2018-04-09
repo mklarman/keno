@@ -3,8 +3,10 @@ var kenoBoard = document.getElementById("kenoBoard")
 let kenoBlock = document.createElement('div')
 kenoBlock.setAttribute("class", "numbers")
 var blockArray = []
+var playersNums;
 
 for(i=1; i<= 80; i++){
+	playersNums = []
 	let kenoBlock = document.createElement('div')
 	kenoBlock.setAttribute("class", "numbers")
 	kenoBlock.style.height = '80px'
@@ -13,16 +15,24 @@ for(i=1; i<= 80; i++){
 	kenoBlock.style.display = 'inLine-block'
 	kenoBlock.style.fontSize = '25px'
 	kenoBlock.style.textAlign = 'center'
+	kenoBlock.style.background = "yellow"
 	kenoBlock.innerHTML = i
+	kenoBoard.appendChild(kenoBlock)
+    blockArray.push(kenoBlock)
 	
 	kenoBlock.addEventListener("click", function(){
-		kenoBlock.style.background = "blue"
+		if(playersNums.length<6){
+			playersNums.push(kenoBlock.innerHTML)
+			kenoBlock.style.background = "blue"
 
+		}
+		console.log(playersNums)
+		
 	})
 	
-     kenoBoard.appendChild(kenoBlock)
-     blockArray.push(kenoBlock)
+     
 }
+
 
 function numPicked(){
 	var selection = Math.floor((Math.random() * 80) + 1);
@@ -36,11 +46,19 @@ function kenoNumbers(){
 		num = numPicked()
 		if(repeat(picks, num) == false){
 			picks.push(num)
-			blockArray[num].style.background = "red"
+			if(blockArray[num].style.background = "blue"){
+				blockArray[num].style.background = "green"
+			}
+			if(blockArray[num].style.background = "yellow"){
+				blockArray[num].style.background = "red"
+
+
+			}
 		}
 	}
+ }
 
-}
+
 	
 
 
