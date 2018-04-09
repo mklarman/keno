@@ -1,3 +1,9 @@
+var submit = document.getElementById("submit")
+var kenoBoard = document.getElementById("kenoBoard")
+let kenoBlock = document.createElement('div')
+kenoBlock.setAttribute("class", "numbers")
+var blockArray = []
+
 for(i=1; i<= 80; i++){
 	let kenoBlock = document.createElement('div')
 	kenoBlock.setAttribute("class", "numbers")
@@ -10,12 +16,82 @@ for(i=1; i<= 80; i++){
 	kenoBlock.innerHTML = i
 	
 	kenoBlock.addEventListener("click", function(){
-		kenoBlock.style.background = "green"
+		kenoBlock.style.background = "blue"
 
 	})
 	
      kenoBoard.appendChild(kenoBlock)
+     blockArray.push(kenoBlock)
 }
+
+function numPicked(){
+	var selection = Math.floor((Math.random() * 80) + 1);
+	return selection
+}
+
+function kenoNumbers(){
+	let picks = []
+	let num = 0
+	while (picks.length < 20){
+		num = numPicked()
+		if(repeat(picks, num) == false){
+			picks.push(num)
+			blockArray[num].style.background = "red"
+		}
+	}
+
+}
+	
+
+
+function repeat (arr, num){
+  return (arr.indexOf(num) === -1) ? false : true
+}
+
+
+
+// submit.addEventListener("click", function(){
+
+
+	
+
+
+
+
+// })
+
+
+
+// function firstFive (numString){
+// 	    let numbers = []
+// 	    let num = 0
+// 	    while (numbers.length < 5){
+// 	        let version = numberType(69)
+// 	        if (version < 9){
+// 	            do{
+// 	                num = numString.split('')[(Math.floor(Math.random() * numString.length ))];
+// 	            }
+// 	            while (num == 0);
+// 	            num = "0" + num
+// 	        }
+// 	        if (version >= 9){
+// 	            do{
+// 	                digit1 = numString.split('')[(Math.floor(Math.random() * numString.length ))];
+// 	            }
+// 	            while (digit1 > 6 || digit1 == 0);
+// 	            digit2 = numString.split('')[(Math.floor(Math.random() * numString.length ))];
+// 	            num = digit1.concat(digit2)
+
+
+// 	        }
+// 	        if (repeat (numbers, num) == false){
+// 	            numbers.push(num)
+// 	        }
+// 	    }
+// 	    return numbers
+// 	}
+
+
   
 
 
