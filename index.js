@@ -5,9 +5,11 @@ kenoBlock.setAttribute("class", "numbers")
 var blockArray = []
 var playersNums = []
 var x = []
+var numPicks = document.getElementById("numPicks")
+var squares = document.getElementsByClassName("numbers")
 
 for(i=1; i<= 80; i++){
-	let kenoBlock = document.createElement('div')
+	kenoBlock = document.createElement('div')
 	kenoBlock.setAttribute("class", "numbers")
 	kenoBlock.style.height = '80px'
 	kenoBlock.style.width = '80px'
@@ -19,18 +21,34 @@ for(i=1; i<= 80; i++){
 	kenoBlock.innerHTML = i
 	kenoBoard.appendChild(kenoBlock)
     blockArray.push(kenoBlock)
-	
-	kenoBlock.addEventListener("click", function(){
-		playerPicks(kenoBlock)
-
-		
-		
-		
-		
-	})
-
-
 }
+for(i=0; i<squares.length; i++){
+	x.push(i)
+	squares[i].addEventListener("click", function(){
+		squares[6].style.background = "blue"
+	})
+}
+
+// 	kenoBlock.addEventListener("click", function(){
+// 		if(playersNums.length<6){
+// 			kenoBlock.style.background = "blue"
+// 			if(repeat(playersNums, kenoBlock.innerHTML) == false){
+// 			playersNums.push(kenoBlock.innerHTML)
+// 			console.log(playersNums.length)
+// 			}
+// 		}
+// 		numPicks.innerHTML = playersNums
+// 		submit.addEventListener("click", function(){
+// 			console.log(playersNums)
+
+// 		})		
+		
+		
+// 	})
+
+
+// }
+
 
 function playerPicks(numbersDiv){
 	numbersDiv.style.background == "blue"
@@ -52,25 +70,23 @@ function numPicked(){
 	return selection
 }
 
+
 function kenoNumbers(){
-	console.log(blockArray[i].innerHTML)
-	// let picks = []
-	// let num = 0
-	// while (picks.length < 20){
-	// 	num = numPicked()
-	// 	if(repeat(picks, num) == false){
-	// 		picks.push(num)
-	// 		if(blockArray[i].innerHTML == ){
-	// 			blockArray[num].style.background = "green"
-	// 		}
-	// 		if(blockArray[num].style.background = "yellow"){
-	// 			blockArray[num].style.background = "red"
+	let picks = []
+	let num = 0
+	while (picks.length < 20){
+		num = numPicked()
+		if(repeat(picks, num) == false){
+			picks.push(num)
+			kenoBlock[num].style.background = "red"
 
-
-	// 		}
-	// 	}
-	// }
- }
+		}
+		// if(blockArray[num] == playersNums.innerHTML){
+		// 	console.log("Hello")
+		// }
+	}
+}
+ 
 
 
 
