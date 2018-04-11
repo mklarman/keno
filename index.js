@@ -6,7 +6,7 @@ var blockArray = []
 var playersNums = []
 var x = []
 var numPicks = document.getElementById("numPicks")
-var squares = document.getElementsByClassName("numbers")
+var picks = []
 
 for(i=1; i<= 80; i++){
 	let kenoBlock = document.createElement('div')
@@ -30,11 +30,6 @@ for(i=1; i<= 80; i++){
 			}
 		}
 		numPicks.innerHTML = playersNums
-		// submit.addEventListener("click", function(){
-		// 	console.log(playersNums)
-  //   })
-  //   blockArray.push(kenoBlock)
-
 	})
 }
 
@@ -47,62 +42,6 @@ submit.addEventListener("click", function(){
 	
 })
 
-
-
-// for(i=0; i<squares.length; i++){
-// 	x.push(i)
-// 	squares[i].addEventListener("click", function(){
-// 		squares[6].style.background = "blue"
-// 	})
-// }
-
-// 	kenoBlock.addEventListener("click", function(){
-// 		if(playersNums.length<6){
-// 			kenoBlock.style.background = "blue"
-// 			if(repeat(playersNums, kenoBlock.innerHTML) == false){
-// 			playersNums.push(kenoBlock.innerHTML)
-// 			console.log(playersNums.length)
-// 			}
-// 		}
-// 		numPicks.innerHTML = playersNums
-// 		submit.addEventListener("click", function(){
-// 			console.log(playersNums)
-
-// 		})		
-		
-		
-// 	})
-
-
-// }
-
-
-// function playerPicks(){
-// 	for(i=0; i<blockArray.length; i++){
-// 		blockArray[i].addEventListener("click", function(){
-// 			blockArray[i].style.background = "blue"
-// 		})
-// 	// }
-// 	// numbersDiv.style.background == "blue"
-// 	// if(repeat(playersNums, numbersDiv.innerHTML) == false){
-// 	// 	x.push(numbersDiv.innerHTML)
-// 	// }
-		
-// 	}
-// }
-
-
-
-function repeat (arr, num){
-  return (arr.indexOf(num) === -1) ? false : true
-}
-
-
-function numPicked(){
-	var selection = Math.floor((Math.random() * 80) + 1);
-	return selection
-}
-var picks = []
 function kenoNumbers(){
 	let num = 0
 	while (picks.length < 20){
@@ -117,11 +56,18 @@ function kenoNumbers(){
 	
 }
 
+function repeat (arr, num){
+  return (arr.indexOf(num) === -1) ? false : true
+}
+
+function numPicked(){
+	var selection = Math.floor((Math.random() * 80) + 1);
+	return selection
+}
 
 
 function findMatch(){
 	for(i=0; i<playersNums.length; i++){
-		// console.log(playersNums[i])
 	
 		for(z=0; z<picks.length; z++){
 			if(playersNums[i] == picks[z]){
@@ -130,7 +76,6 @@ function findMatch(){
 
 		}
 	}
-	console.log(x)
 }
 	
 
@@ -197,7 +142,7 @@ function payOut(){
 		console.log("Two??  What are you gonna do with two numbers?  Scram.")
 	}
 	if(playersNums.length == 5 && x.length == 1){
-		console.log("One number?  Stevie Wonder can pick one number out offive and he can't fuckin' see.")
+		console.log("One number?  Stevie Wonder can pick one number outta five and he can't fuckin' see.")
 	}
 	if(playersNums.length == 6 && x.length == 6){
 		console.log("1500x your bet??? What the f....")
@@ -328,79 +273,6 @@ function payOut(){
 	if(playersNums.length == 10 && x.length == 1){
 		console.log("1 outta 10???  This ain't rocket science, kid.  You must be stupid.")
 	}
-
-
 	
 }
 
-
-
-
-
-
- 
-
-
-
-// submit.addEventListener("click", function(){
-
-
-	
-
-
-
-
-// })
-
-
-
-// function firstFive (numString){
-// 	    let numbers = []
-// 	    let num = 0
-// 	    while (numbers.length < 5){
-// 	        let version = numberType(69)
-// 	        if (version < 9){
-// 	            do{
-// 	                num = numString.split('')[(Math.floor(Math.random() * numString.length ))];
-// 	            }
-// 	            while (num == 0);
-// 	            num = "0" + num
-// 	        }
-// 	        if (version >= 9){
-// 	            do{
-// 	                digit1 = numString.split('')[(Math.floor(Math.random() * numString.length ))];
-// 	            }
-// 	            while (digit1 > 6 || digit1 == 0);
-// 	            digit2 = numString.split('')[(Math.floor(Math.random() * numString.length ))];
-// 	            num = digit1.concat(digit2)
-
-
-// 	        }
-// 	        if (repeat (numbers, num) == false){
-// 	            numbers.push(num)
-// 	        }
-// 	    }
-// 	    return numbers
-// 	}
-
-
-  
-
-
-
-
-
-
-
-  // hiddenLetters = document.createElement('div') 
-  // hiddenLetters.setAttribute("class", "letter")
-  // hiddenLetters.style.height = '35px'
-  // hiddenLetters.style.width = '35px'
-  // hiddenLetters.style.borderBottom = 'solid white'
-  // hiddenLetters.style.display = 'inLine-block'
-  // hiddenLetters.style.marginLeft = '15px'
-  // hiddenLetters.style.marginTop = '27px'
-  // hiddenLetters.style.fontSize = '23'
-  // hiddenLetters.style.textAlign = 'center'
-  // wordToGuess.appendChild(hiddenLetters)
-  // }
