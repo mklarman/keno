@@ -19,7 +19,7 @@ for(i=1; i<= 80; i++){
 	kenoBlock.style.textAlign = 'center'
 	kenoBlock.style.background = "yellow"
 	kenoBlock.innerHTML = i
-	blockArray.push(kenoBlock.innerHTML)
+	blockArray.push(kenoBlock)
 	kenoBoard.appendChild(kenoBlock)
 	kenoBlock.addEventListener("click", function(){
     	if(playersNums.length<6){
@@ -37,8 +37,14 @@ for(i=1; i<= 80; i++){
 
 	})
 }
-console.log(blockArray.length)
-console.log(playersNums)
+
+
+submit.addEventListener("click", function(){
+	kenoNumbers()
+	findMatch(picks, playersNums)
+})
+
+
 
 // for(i=0; i<squares.length; i++){
 // 	x.push(i)
@@ -93,23 +99,41 @@ function numPicked(){
 	var selection = Math.floor((Math.random() * 80) + 1);
 	return selection
 }
-
+var picks = []
 function kenoNumbers(){
-	let picks = []
 	let num = 0
 	while (picks.length < 20){
 		num = numPicked()
-		console.log(num)
 		if(repeat(picks, num) == false){
 			picks.push(num)
-
+			blockArray[num].style.background = "red"
 		}
-		console.log(picks)
-		// if(blockArray[num] == playersNums.innerHTML){
-		// 	console.log("Hello")
-		// }
 	}
+	
 }
+
+
+
+function findMatch(arr1, arr2){
+	var ary = new Array();
+	for(i = 0;i < arr2.length; i++){
+  		
+  		for(z = 0; z < arr2.length; z++){
+    		
+    		if(arr2[i] == arr1[z]){
+      			ary.push(arr2[i]);
+    		}
+  		}
+
+	}
+	return ary
+}
+
+
+
+
+
+
  
 
 
