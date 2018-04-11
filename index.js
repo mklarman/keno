@@ -42,6 +42,7 @@ for(i=1; i<= 80; i++){
 submit.addEventListener("click", function(){
 	kenoNumbers()
 	findMatch()
+	changeBackground()
 	
 })
 
@@ -132,7 +133,19 @@ function findMatch(){
 }
 	
 
-
+function changeBackground(){
+	if(x.length == 0){
+		console.log("no matches")
+	}
+	if(x.length == 1){
+		blockArray[x[0]-1].style.background = "green"
+	}
+	if(x.length > 1){
+		for(i=0; i<x.length; i++){
+			blockArray[x[i]-1].style.background = "green"
+		}
+	}
+}
 	// var ary = new Array();
 	// for(i = 0;i < arr2.length; i++){
   		
