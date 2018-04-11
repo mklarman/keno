@@ -41,7 +41,8 @@ for(i=1; i<= 80; i++){
 
 submit.addEventListener("click", function(){
 	kenoNumbers()
-	findMatch(picks, playersNums)
+	findMatch()
+	
 })
 
 
@@ -104,9 +105,11 @@ function kenoNumbers(){
 	let num = 0
 	while (picks.length < 20){
 		num = numPicked()
+		console.log(num)
 		if(repeat(picks, num) == false){
 			picks.push(num)
-			blockArray[num].style.background = "red"
+			blockArray[num-1].style.background = "red"
+			
 		}
 	}
 	
@@ -114,20 +117,35 @@ function kenoNumbers(){
 
 
 
-function findMatch(arr1, arr2){
-	var ary = new Array();
-	for(i = 0;i < arr2.length; i++){
-  		
-  		for(z = 0; z < arr2.length; z++){
-    		
-    		if(arr2[i] == arr1[z]){
-      			ary.push(arr2[i]);
-    		}
-  		}
+function findMatch(){
+	for(i=0; i<playersNums.length; i++){
+		// console.log(playersNums[i])
+	
+		for(z=0; z<picks.length; z++){
+			if(playersNums[i] == picks[z]){
+				x.push(playersNums[i])
+			}
 
+		}
 	}
-	return ary
+	console.log(x)
 }
+	
+
+
+	// var ary = new Array();
+	// for(i = 0;i < arr2.length; i++){
+  		
+ //  		for(z = 0; z < arr2.length; z++){
+    		
+ //    		if(arr2[i] == arr1[z]){
+ //      			ary.push(arr2[i]);
+ //    		}
+ //  		}
+
+	// }
+	// return ary
+
 
 
 
