@@ -1,3 +1,4 @@
+var bet;
 var message = document.getElementById("message")
 var bank = document.getElementById("bank")
 var submit = document.getElementById("submit")
@@ -13,14 +14,17 @@ var bankroll = 500
 message.innerHTML = "Play some Keno"
 bank.innerHTML = bankroll
 
-var bet = prompt("How much you wanna bet on this game?");
-bank.innerHTML = bankroll - parseInt(bet)
 
-console.log(parseInt(bet))
+
+
 
 function playKeno(){
-
-	for(i=1; i<= 80; i++){
+	if(blockArray.length == 0){
+		bet = prompt("How much you wanna bet on this game?");
+		bank.innerHTML = bankroll - parseInt(bet)
+		if(parseInt(bet)>50)
+		message.innerHTML = "$" + bet + " bet, huh?  You must think you're somebody.  Well, you're not."
+		for(i=1; i<= 80; i++){
 		let kenoBlock = document.createElement('div')
 		kenoBlock.setAttribute("class", "numbers")
 		kenoBlock.style.height = '80px'
@@ -42,17 +46,43 @@ function playKeno(){
 				}
 			}
 			numPicks.innerHTML = playersNums
-		})
-	}
+			})
+		}
 
-
-	submit.addEventListener("click", function(){
-		kenoNumbers()
-		findMatch()
-		changeBackground()
-		payOut()
+		submit.addEventListener("click", function(){
+			kenoNumbers()
+			findMatch()
+			changeBackground()
+			payOut()
 		
+		})
+   }else{
+
+   		for(i=0; i < picks.length; i++){
+			blockArray[picks[i] -1].style.background = "yellow"
+			blockArray[picks[i] -1].style.color = "black"
+		}
+		for(i=0; i < playersNums.length; i++){
+			blockArray[playersNums[i] -1].style.background = "yellow"
+			blockArray[playersNums[i] -1].style.color = "black"
+		}
+		picks = []
+		playersNums = []
+		x = []
+		bet = prompt("How much you wanna bet on this game?");
+		bank.innerHTML = bankroll - parseInt(bet)
+		if(parseInt(bet)>50)
+		message.innerHTML = "$" + bet + " bet, huh?  You must think you're somebody.  Well, you're not."
+		submit.addEventListener("click", function(){
+			kenoNumbers()
+			findMatch()
+			changeBackground()
+			payOut()		
 	})
+
+
+   }
+	
 }
 
 function kenoNumbers(){
@@ -66,7 +96,6 @@ function kenoNumbers(){
 			
 		}
 	}
-	
 }
 
 function repeat (arr, num){
