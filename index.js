@@ -12,7 +12,7 @@ var numPicks = document.getElementById("numPicks")
 var picks = []
 var bankroll = 500
 message.innerHTML = "Play some Keno"
-bank.innerHTML = bankroll
+var currentBankroll;
 
 
 
@@ -21,7 +21,8 @@ bank.innerHTML = bankroll
 function playKeno(){
 	if(blockArray.length == 0){
 		bet = prompt("How much you wanna bet on this game?");
-		bank.innerHTML = bankroll - parseInt(bet)
+		currentBankroll = currentBankroll - parseInt(bet)
+		bank.innerHTML = currentBankroll
 		if(parseInt(bet)>50)
 		message.innerHTML = "$" + bet + " bet, huh?  You must think you're somebody.  Well, you're not."
 		for(i=1; i<= 80; i++){
@@ -42,7 +43,6 @@ function playKeno(){
 				kenoBlock.style.background = "blue"
 				if(repeat(playersNums, kenoBlock.innerHTML) == false){
 				playersNums.push(kenoBlock.innerHTML)
-				console.log(playersNums.length)
 				}
 			}
 			numPicks.innerHTML = playersNums
@@ -50,10 +50,12 @@ function playKeno(){
 		}
 
 		submit.addEventListener("click", function(){
+			x = []
 			kenoNumbers()
 			findMatch()
 			changeBackground()
 			payOut()
+
 		
 		})
    }else{
@@ -68,12 +70,12 @@ function playKeno(){
 		}
 		picks = []
 		playersNums = []
-		x = []
 		bet = prompt("How much you wanna bet on this game?");
 		bank.innerHTML = bankroll - parseInt(bet)
 		if(parseInt(bet)>50)
 		message.innerHTML = "$" + bet + " bet, huh?  You must think you're somebody.  Well, you're not."
 		submit.addEventListener("click", function(){
+			x = []
 			kenoNumbers()
 			findMatch()
 			changeBackground()
