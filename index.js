@@ -10,9 +10,17 @@ var playersNums = []
 var x = []
 var numPicks = document.getElementById("numPicks")
 var picks = []
-var bankroll = 500
 message.innerHTML = "Play some Keno"
+var bankroll;
 var currentBankroll;
+
+if(blockArray.length == 0){
+	bankroll = 500
+	currentBankroll = bankroll
+	bank.innerHTML = bankroll
+}else{
+	bank.innerHTML = currentBankroll
+}
 
 
 
@@ -21,8 +29,8 @@ var currentBankroll;
 function playKeno(){
 	if(blockArray.length == 0){
 		bet = prompt("How much you wanna bet on this game?");
-		currentBankroll = currentBankroll - parseInt(bet)
-		bank.innerHTML = currentBankroll
+		bankroll = bankroll - parseInt(bet)
+		bank.innerHTML = bankroll
 		if(parseInt(bet)>50)
 		message.innerHTML = "$" + bet + " bet, huh?  You must think you're somebody.  Well, you're not."
 		for(i=1; i<= 80; i++){
@@ -68,10 +76,12 @@ function playKeno(){
 			blockArray[playersNums[i] -1].style.background = "yellow"
 			blockArray[playersNums[i] -1].style.color = "black"
 		}
+		console.log(bankroll)
+		currentBankroll = bankroll - parseInt(bet)
 		picks = []
 		playersNums = []
 		bet = prompt("How much you wanna bet on this game?");
-		bank.innerHTML = bankroll - parseInt(bet)
+		bank.innerHTML = currentBankroll - parseInt(bet)
 		if(parseInt(bet)>50)
 		message.innerHTML = "$" + bet + " bet, huh?  You must think you're somebody.  Well, you're not."
 		submit.addEventListener("click", function(){
